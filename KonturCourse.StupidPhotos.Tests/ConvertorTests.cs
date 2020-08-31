@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.IO;
 using KonturCourse.StupidPhotos.Lib.Data;
 using Xunit;
 
