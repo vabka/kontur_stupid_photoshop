@@ -1,4 +1,4 @@
-namespace KonturCourse.Data
+namespace KonturCourse.StupidPhotos.Lib.Data
 {
     public class Photo
     {

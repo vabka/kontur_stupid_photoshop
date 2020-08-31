@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 
-namespace KonturCourse.Data
+namespace KonturCourse.StupidPhotos.Lib.Data
 {
     public static class Convertors
     {

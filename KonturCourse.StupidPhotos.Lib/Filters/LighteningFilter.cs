@@ -1,6 +1,6 @@
-using KonturCourse.Data;
+using KonturCourse.StupidPhotos.Lib.Data;
 
-namespace KonturCourse.Filters
+namespace KonturCourse.StupidPhotos.Lib.Filters
 {
 	public class LighteningFilter : IFilter
 	{

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using KonturCourse.Data;
-using KonturCourse.Filters;
+using KonturCourse.StupidPhotos.Lib.Data;
+using KonturCourse.StupidPhotos.Lib.Filters;
 
 namespace KonturCourse
 {

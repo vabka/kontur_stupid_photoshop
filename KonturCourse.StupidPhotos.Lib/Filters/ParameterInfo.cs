@@ -1,4 +1,4 @@
-﻿namespace KonturCourse.Filters
+﻿namespace KonturCourse.StupidPhotos.Lib.Filters
 {
     /// <summary>
     /// Этот класс содержит описание одного параметра фильтра: как он называется, в каких пределах изменяется, и т.д.
