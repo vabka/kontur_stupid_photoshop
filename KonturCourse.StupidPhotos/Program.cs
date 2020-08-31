@@ -20,7 +20,7 @@ namespace KonturCourse
             };
             if (args[1] == "?")
             {
-                Console.WriteLine($"Filter: {args[0]}");
+                Console.WriteLine($"Filter: {filter}");
                 var parameters = filter.GetParameters();
                 foreach (var parameter in parameters)
                 {
