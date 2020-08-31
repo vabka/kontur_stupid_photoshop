@@ -13,7 +13,6 @@ namespace KonturCourse
         {
             var filter = args[0] switch
             {
-                "crop" => (IFilter) new CropFilter(),
                 "lighten" => new LighteningFilter(),
                 _ => throw new InvalidOperationException("Unknown filter")
             };
