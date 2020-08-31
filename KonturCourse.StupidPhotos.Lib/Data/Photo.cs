@@ -1,6 +1,6 @@
 namespace KonturCourse.StupidPhotos.Lib.Data
 {
-    public class Photo
+    public struct Photo
     {
         public int Width;
         public int Height;
