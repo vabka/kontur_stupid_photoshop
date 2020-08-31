@@ -1,10 +1,9 @@
 namespace KonturCourse.Data
 {
-	public class Photo
-	{
-		public int width;
-		public int height;
-		public double[,,] data;
-	}
+    public class Photo
+    {
+        public int Width;
+        public int Height;
+        public double[,,] Data;
+    }
 }
-
