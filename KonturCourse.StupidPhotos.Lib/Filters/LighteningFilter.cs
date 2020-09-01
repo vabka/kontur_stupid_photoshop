@@ -29,11 +29,7 @@ namespace KonturCourse.StupidPhotos.Lib.Filters
                 _ => throw new ArgumentException(nameof(parameters))
             };
 
-            return Photo.Create(original.Width, original.Height, p =>
-            {
-                var (red, green, blue) = original[p];
-                return new Color(Trim(red * multiplier), Trim(green * multiplier), Trim(blue * multiplier));
-            });
+            return Photo.Create(original.Width, original.Height, point => original[point] * multiplier);
         }
 
         private static double Trim(double val) => val > 1 ? 1 : val;

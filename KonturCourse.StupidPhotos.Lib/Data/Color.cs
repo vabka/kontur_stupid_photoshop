@@ -21,6 +21,19 @@ namespace KonturCourse.StupidPhotos.Lib.Data
         public double Green { get; }
         public double Blue { get; }
 
+        private static double Trim(double val) => val < 0
+            ? 0
+            : val > 1
+                ? 1
+                : val;
+
+        public static Color operator *(Color color, double multiplier) => new Color(
+            Trim(color.Red * multiplier),
+            Trim(color.Green * multiplier),
+            Trim(color.Blue * multiplier));
+
+        public static Color operator *(double multiplier, Color color) => color * multiplier;
+
         public void Deconstruct(out double red, out double green, out double blue) =>
             (red, green, blue) = (Red, Green, Blue);
     }
