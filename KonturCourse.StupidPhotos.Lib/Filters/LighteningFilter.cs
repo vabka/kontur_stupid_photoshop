@@ -28,7 +28,7 @@ namespace KonturCourse.StupidPhotos.Lib.Filters
                 _ => throw new ArgumentException(nameof(parameters))
             };
 
-            return Photo.Create(original.Width, original.Height, point => original[point] * multiplier);
+            return Photo.Create(original.Dimensions, point => original[point] * multiplier);
         }
     }
 }

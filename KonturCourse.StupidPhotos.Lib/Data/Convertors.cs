@@ -6,7 +6,7 @@ namespace KonturCourse.StupidPhotos.Lib.Data
     public static class Convertors
     {
         public static Photo Bitmap2Photo(Bitmap bmp) =>
-            Photo.Create(bmp.Width, bmp.Height, point =>
+            Photo.Create(new Dimensions(bmp.Width, bmp.Height), point =>
             {
                 var (x, y) = point;
                 var color = bmp.GetPixel(x, y);
@@ -26,7 +26,7 @@ namespace KonturCourse.StupidPhotos.Lib.Data
 
         public static Bitmap Photo2Bitmap(Photo photo)
         {
-            var bmp = new Bitmap(photo.Width, photo.Height);
+            var bmp = new Bitmap(photo.Dimensions.Width, photo.Dimensions.Height);
             foreach (var (x, y, r, g, b) in photo)
             {
                 bmp.SetPixel(x, y, System.Drawing.Color.FromArgb(

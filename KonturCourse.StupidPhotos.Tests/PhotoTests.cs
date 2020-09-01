@@ -9,7 +9,7 @@ namespace KonturCourse.StupidPhotos.Tests
         [Fact]
         public void ValidInitialization()
         {
-            var photo = Photo.Create(3, 4, point => point switch
+            var photo = Photo.Create(new Dimensions(3, 4), point => point switch
             {
                 (0, 0) => new Color(0.25, 0, 0),
                 (0, 1) => new Color(0.5, 0, 0),

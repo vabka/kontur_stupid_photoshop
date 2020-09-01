@@ -1,43 +1,39 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 
 namespace KonturCourse.StupidPhotos.Lib.Data
 {
     public readonly struct Photo : IEnumerable<Pixel>
     {
-        public static Photo Create(int width, int height, Func<Point, Color> initializer)
+        public Photo(Dimensions dimensions, ReadOnlyMemory<Color> data) =>
+            (Dimensions, Data) = (dimensions, data);
+
+        public static Photo Create(Dimensions dimensions, Func<Point, Color> initializer)
         {
-            Debug.Assert(width > 0);
-            Debug.Assert(height > 0);
-            var buf = new Memory<Color>(new Color[width * height]);
+            var buf = new Memory<Color>(new Color[dimensions.Area]);
             var span = buf.Span;
-            for (var x = 0; x < width; x++)
-            for (var y = 0; y < height; y++)
-                span[GetOffset(width, y, x)] = initializer(new Point(x, y));
-            return new Photo(width, height, buf);
+            foreach (var point in dimensions.EnumeratePoints())
+                span[GetOffset(dimensions.Width, point)] = initializer(point);
+            return new Photo(dimensions, buf);
         }
 
-        private static int GetOffset(int width, int y, int x)
-        {
-            return y * width + x;
-        }
+        private static int GetOffset(int width, Point point) =>
+            point.Y * width + point.X;
 
-        public Photo(int width, int height, ReadOnlyMemory<Color> data) =>
-            (Width, Height, Data) = (width, height, data);
 
-        public int Width { get; }
-        public int Height { get; }
+        public Dimensions Dimensions { get; }
         public ReadOnlyMemory<Color> Data { get; }
-        public Color this[Point point] => this[point.X, point.Y];
-        public Color this[int x, int y] => Data.Span[GetOffset(Width, y, x)];
+
+        public Color this[Point point] => Data.Span[GetOffset(Dimensions.Width, point)];
 
         public IEnumerator<Pixel> GetEnumerator()
         {
-            for (var x = 0; x < Width; x++)
-            for (var y = 0; y < Height; y++)
-                yield return new Pixel(new Point(x, y), this[x, y]);
+            var self = this;
+            return Dimensions.EnumeratePoints()
+                .Select(point => new Pixel(point, self[point]))
+                .GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
