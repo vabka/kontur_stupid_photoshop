@@ -16,6 +16,7 @@ namespace KonturCourse.StupidPhotos.Lib.Data
 
         public int Width { get; }
         public int Height { get; }
-        public readonly int Area => Width * Height;
+        public int Area => Width * Height;
+        public void Deconstruct(out int width, out int height) => (width, height) = (Width, Height);
     }
 }

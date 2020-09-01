@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using KonturCourse.StupidPhotos.Lib.Data;
 using KonturCourse.StupidPhotos.Lib.Filters;
+using KonturCourse.StupidPhotos.Lib.Filters.Attributes;
 
 namespace KonturCourse
 {
@@ -24,7 +25,7 @@ namespace KonturCourse
         }
 
         private static readonly IReadOnlyList<Type> FilterTypes = new[]
-            {typeof(LighteningFilter), typeof(GrayscaleFilter)};
+            {typeof(LighteningFilter), typeof(GrayscaleFilter), typeof(MirrorFilter)};
 
         static IFilter Create(string filterName, IEnumerable<string> filterArgs)
         {
@@ -51,6 +52,8 @@ namespace KonturCourse
                     value = int.Parse(val, CultureInfo.InvariantCulture);
                 if (prop.PropertyType == typeof(string))
                     value = val;
+                if (prop.PropertyType.IsEnum)
+                    value = Enum.Parse(prop.PropertyType, val);
                 if (value != null)
                     prop.SetValue(filterObject, value);
             }

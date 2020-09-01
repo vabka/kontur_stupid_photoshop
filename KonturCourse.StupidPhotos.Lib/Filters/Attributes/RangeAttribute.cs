@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KonturCourse.StupidPhotos.Lib.Filters
+namespace KonturCourse.StupidPhotos.Lib.Filters.Attributes
 {
     public class RangeAttribute : Attribute
     {

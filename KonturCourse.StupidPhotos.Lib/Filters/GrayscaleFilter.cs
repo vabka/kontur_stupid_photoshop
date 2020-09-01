@@ -1,4 +1,5 @@
 ﻿using KonturCourse.StupidPhotos.Lib.Data;
+using KonturCourse.StupidPhotos.Lib.Filters.Attributes;
 
 namespace KonturCourse.StupidPhotos.Lib.Filters
 {

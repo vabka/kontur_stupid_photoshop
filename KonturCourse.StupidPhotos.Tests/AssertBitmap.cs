@@ -1,10 +1,14 @@
 ﻿using System.Drawing;
 using Xunit;
+using Xunit.Sdk;
 
 namespace KonturCourse.StupidPhotos.Tests
 {
     public static class AssertBitmap
     {
+        public static void NotSamePixels(Bitmap expected, Bitmap actual) =>
+            Assert.Throws<EqualException>(() => SamePixels(expected, actual));
+
         public static void SamePixels(Bitmap expected, Bitmap actual)
         {
             Assert.Equal(expected.Width, actual.Width);
