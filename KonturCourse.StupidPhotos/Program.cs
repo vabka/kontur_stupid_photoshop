@@ -13,7 +13,8 @@ namespace KonturCourse
         {
             var filter = args[0] switch
             {
-                "lighten" => new LighteningFilter(),
+                "lighten" => (IFilter) new LighteningFilter(),
+                "grayscale" => new GrayscaleFilter(),
                 _ => throw new InvalidOperationException("Unknown filter")
             };
             if (args[1] == "?")
