@@ -13,8 +13,8 @@ namespace KonturCourse.StupidPhotos.Tests
             using var image = Image.FromFile(TestData.Path("cat.jpg"));
             using var catBitmap = new Bitmap(image);
             var photo = Convertors.Bitmap2Photo(catBitmap);
-            var filter = new LighteningFilter();
-            var result = filter.Process(photo, new[] {1.0});
+            var filter = new LighteningFilter {Ratio = 1.0};
+            var result = filter.Process(photo);
             using var resultBitmap = Convertors.Photo2Bitmap(result);
             AssertBitmap.SamePixels(catBitmap, resultBitmap);
         }
@@ -27,8 +27,8 @@ namespace KonturCourse.StupidPhotos.Tests
             using var image = Image.FromFile(TestData.Path("cat.jpg"));
             using var catBitmap = new Bitmap(image);
             var photo = Convertors.Bitmap2Photo(catBitmap);
-            var filter = new LighteningFilter();
-            var result = filter.Process(photo, new[] {0.5});
+            var filter = new LighteningFilter {Ratio = 0.5};
+            var result = filter.Process(photo);
             using var resultBitmap = Convertors.Photo2Bitmap(result);
             AssertBitmap.SamePixels(expectedBitmap, resultBitmap);
         }
