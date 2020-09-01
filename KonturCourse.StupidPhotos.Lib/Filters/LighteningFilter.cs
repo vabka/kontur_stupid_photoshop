@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using KonturCourse.StupidPhotos.Lib.Data;
 
 namespace KonturCourse.StupidPhotos.Lib.Filters
@@ -31,7 +30,5 @@ namespace KonturCourse.StupidPhotos.Lib.Filters
 
             return Photo.Create(original.Width, original.Height, point => original[point] * multiplier);
         }
-
-        private static double Trim(double val) => val > 1 ? 1 : val;
     }
 }
